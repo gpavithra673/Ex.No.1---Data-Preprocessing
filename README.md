@@ -1,6 +1,6 @@
 # Ex.No.1---Data-Preprocessing                                                                                                          
-                                                                 ### DATE:
-                                                                 ### Rollno:212221240036
+### DATE:
+### Rollno:212221240036
 ## AIM:
 
 To perform Data preprocessing in a data set downloaded from Kaggle
