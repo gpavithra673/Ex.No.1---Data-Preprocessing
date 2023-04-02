@@ -33,9 +33,60 @@ Splitting the data into test and train
 
 ## PROGRAM:
 /Write your code here/
-
+~~~
+import io
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+import pandas as pd
+df = pd.read_csv('Churn_Modelling.csv')
+df.head()
+le=LabelEncoder()
+df["CustomerId"]=le.fit_transform(df["CustomerId"])
+df["Surname"]=le.fit_transform(df["Surname"])
+df["CreditScore"]=le.fit_transform(df["CreditScore"])
+df["Geography"]=le.fit_transform(df["Geography"])
+df["Gender"]=le.fit_transform(df["Gender"])
+df["Balance"]=le.fit_transform(df["Balance"])
+df["EstimatedSalary"]=le.fit_transform(df["EstimatedSalary"])
+X=df.iloc[:,:-1].values
+print(X)
+Y=df.iloc[:,-1].values
+print(Y)
+print(df.isnull().sum())
+df.fillna(df.mean().round(1),inplace=True)
+print(df.isnull().sum())
+y=df.iloc[:,-1].values
+print(y)
+df.duplicated()
+print(df['Exited'].describe())
+scaler= MinMaxScaler()
+df1=pd.DataFrame(scaler.fit_transform(df))
+print(df1)
+x_train,x_test,y_train,x_test=train_test_split(X,Y,test_size=0.2)
+print(x_train)
+print(len(x_train))
+print(x_test)
+print(len(x_test))
+~~~
 ## OUTPUT:
-/ Show the result/
+### Printing first five rows and cols of given dataset:
+![image](https://user-images.githubusercontent.com/93427264/229359845-cb939621-0459-43ec-89fd-a6f64954d8b9.png)
+### Seperating x and y values:
+![image](https://user-images.githubusercontent.com/93427264/229359871-b0f2390f-7c2c-4475-9c06-77f9e02443d9.png)
+### Checking NULL value in the given dataset:
+![image](https://user-images.githubusercontent.com/93427264/229359905-7242ba39-daef-4fbe-b5a8-68b3fecfbc62.png)
+### Printing the Y column along with its discribtion:
+![image](https://user-images.githubusercontent.com/93427264/229360039-2e50d2bf-3ed3-49fa-bcb2-eb6b4abc2973.png)
+### Applyign data preprocessing technique and printing the dataset:
+![image](https://user-images.githubusercontent.com/93427264/229360121-85463e88-3fa5-4d1f-825f-4acddd762314.png)
+### Printing training set:
+![image](https://user-images.githubusercontent.com/93427264/229360208-dd9c0e8f-f1b2-4b13-8124-c8dbac7ad485.png)
+### Printing testing set and length of it:
+![image](https://user-images.githubusercontent.com/93427264/229360244-28e2fa80-b67b-4431-aff2-1df167281f9c.png)
 
-## RESULT
-/Type your result here/
+## RESULT:
+### Hence the data preprocessing is done using the above code and data has been splitted into trainning and testing
+### data for getting a better model.
+
